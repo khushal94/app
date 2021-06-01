@@ -1,0 +1,126 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Medicine</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="custom-content-back">
+
+  <ion-searchbar class="custom-searchbar" ngModel (input)="SearchNow($event.target.value)"></ion-searchbar>
+  <ion-card>
+    <ion-row class="top-doctor-row no-margin-padding">
+      <ion-col size="8" class="no-margin-padding text-center">
+        <p class="m-5 ">Order with Prescription</p>
+      </ion-col>
+      <ion-col size="4" class="no-margin-padding text-center">
+        <ion-button expand="full" shape="round" color="dgreen" class="small-btn">Upload</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+
+
+
+
+  <!-- <ion-card>
+    <ion-row class="top-doctor-row card-pm">
+      <ion-col size="9" class="no-margin-padding " (click)="ShowDetails()">
+        <p class="medicine-name">Paracetamol 500mg Tablet</p>
+        <p class="pharama">Sun Pharmaceutical Pvt Ltd</p>
+        <p class="pricetag"> <span class="mrp">MRP</span> ₹12.75 (Per Strip)</p>
+      </ion-col>
+      <ion-col size="3" class="no-margin-padding text-center">
+        <ion-button expand="full" shape="round" color="dgreen" class="small-btn small-btn-mt">
+          <ion-icon name="add-outline"></ion-icon> Add
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="top-doctor-row card-pm" *ngIf="DetailsShow == true">
+      <ion-col size="12" class="no-margin-padding ">
+        <p class="description" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel malesuada felis. Etiam
+          rutrum urna risus,
+          in vestibulum ipsum porta vitae. In fringilla maximus metus, ac viverra ligula molestie in. Nunc rhoncus
+          faucibus ligula vitae suscipit. Nunc quis lacinia risus. Vestibulum ante ipsum primis in faucibus orci luctus
+          et ultrices posuere cubilia curae; Nulla sed ipsum id ligula bibendum tincidunt. Vestibulum accumsan, velit
+          quis consequat posuere, urna tortor auctor magna, vitae semper orci nunc a ipsum. Nam non felis eu metus
+          tincidunt finibus at ac ligula. Etiam vitae porta massa. Quisque mollis ultrices est. Etiam efficitur maximus
+          eleifend.</p>
+      </ion-col>
+    </ion-row>
+  </ion-card> -->
+
+  <ion-card *ngFor="let medicines of MedicineData">
+    <ion-row class="top-doctor-row card-pm">
+      <ion-col size="9" class="no-margin-padding " (click)="ShowDetails()">
+        <p class="medicine-name">{{medicines.trade_name}}</p>
+        <p class="pharama">{{medicines.pharma}}</p>
+        <p class="pricetag"> <span class="mrp">MRP</span> ₹{{medicines.rate}} (Per Strip)</p>
+      </ion-col>
+      <ion-col size="3" class="no-margin-padding text-center">
+        <ion-button expand="full" shape="round" color="dgreen" class="small-btn small-btn-mt" (click)="AddMenu(medicines)">
+          <ion-icon name="add-outline"></ion-icon> Add
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="top-doctor-row card-pm" *ngIf="DetailsShow == true">
+      <ion-col size="12" class="no-margin-padding ">
+        <p class="description">{{medicines.description}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+
+  <img src="../../assets/medicine.png" style="width: 80px;
+    position: absolute;
+    bottom: -25px;
+    right: -14px;">
+
+</ion-content>
+
+
+<lib-ionic-pullup *ngIf="ShowFooter" (onExpand)="footerExpanded()" (onCollapse)="footerCollapsed()" [(state)]="footerState"
+  [toolbarTopMargin]="150" [minBottomVisible]="50">
+
+  <ion-toolbar class="footer-toolbar" (click)="toggleFooter()" #ionDragFooter>
+    <ion-title>
+      <ion-icon *ngIf="footerState == 0" name="chevron-up-outline"></ion-icon>
+      <ion-icon *ngIf="footerState == 1" name="chevron-down-outline"></ion-icon>
+    </ion-title>
+  </ion-toolbar>
+  <ion-content class="background-transparent">
+    <div class="footer-content-main">
+
+      <ion-card *ngFor="let medicines of OrderMedicine;let i=index">
+        <ion-row class="top-doctor-row card-pm">
+          <ion-col size="9" class="no-margin-padding " (click)="ShowDetails()">
+            <p class="medicine-name">{{medicines.trade_name}}</p>
+            <p class="pharama">{{medicines.pharma}}</p>
+            <p class="pricetag"> <span class="mrp">MRP</span> ₹{{medicines.rate}} (Per Strip)</p>
+          </ion-col>
+          <ion-col size="3" class="no-margin-padding text-center">
+            <ion-button expand="full" shape="round" color="dgreen" class="small-btn small-btn-mt" (click)="RemoveMenu(i)">
+              <ion-icon name="add-outline"></ion-icon> Remove
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="top-doctor-row card-pm" *ngIf="DetailsShow == true">
+          <ion-col size="12" class="no-margin-padding ">
+            <p class="description">{{medicines.description}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+
+
+     <div class="text-center"> <ion-button [disabled]="OrderMedicine.length==0" color="dgreen" shape="round" size="" (click)="PlaceOrder()">Place Order</ion-button> </div>
+
+
+    </div>
+  </ion-content>
+</lib-ionic-pullup>

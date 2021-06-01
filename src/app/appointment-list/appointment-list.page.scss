@@ -1,0 +1,46 @@
+.img-div{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.img-div img{ 
+        height: 45px !important;
+}
+
+.speciality{
+    font-style: italic;
+    font-size: 11px !important;
+    color:#929292;
+}
+
+.doctor-name{
+    font-weight: 500;
+    color:#000
+}
+
+.borderline{
+    margin: 0px 15px;
+    border-top: 1px solid #d2d2d2;
+}
+
+.card-btm{
+        margin: 0;
+        color: #00c6ad;
+        font-size: 12px;
+        display: inline-block;
+        margin-right: 20px;
+}
+
+.card-div{
+    padding: 5px 20px;
+}
+
+ion-content{
+    --background: #f1f1f1;
+}
+
+.pdate{
+    font-size: 10px;
+    color: #000;
+}

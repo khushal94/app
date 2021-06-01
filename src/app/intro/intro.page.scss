@@ -1,0 +1,45 @@
+.new-background-color{
+    --background:#fbfbfb !important;
+}
+
+p{
+    font-size: 10px;
+}
+
+.title{
+    font-weight: 600;
+}
+
+.slide-section{
+    padding: 0px 45px;
+}
+
+.dots-on{
+    background: #00c6ad;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.dots-off{
+    border: 2px solid #00c6ad;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.banner-slide{
+    padding: 40px 20px;
+}
+
+.para-margin-btm{
+    margin-bottom: 2rem;
+}
+
+.button-margin-top{
+    margin-top: 2rem;
+}

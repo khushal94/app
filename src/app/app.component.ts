@@ -6,12 +6,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public appPages = [
-    { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
+    { title: 'Dashboard', url: '/dashboard', icon: 'bar-chart',is_image:false },
+    { title: 'Appointments', url: '/appointment-list', icon: 'calendar',is_image:false },
+    { title: 'Nurse', url: '/nurse-listing', icon: 'people',is_image:false },
+    // { title: 'Emergency', url: '/folder/Archived', icon: 'heart' },
+    { title: 'Upload Prescription', url: '/order-medicine', icon: 'bandage',is_image:false },
+    { title: 'Order Medicine', url: '/search-medicine', image:'assets/medicine-icon.png', is_image:true },
+    { title: 'FAQ', url: '/faq', icon: 'help',is_image:false },
+    { title: 'Support', url: '/support', icon: 'people-circle',is_image:false },
+    { title: 'Our Mission & Vision', url: '/vision', icon: 'bulb',is_image:false },
+    { title: 'My Profile', url: '/user-profile', icon: 'person-circle',is_image:false },
+    // { title: 'Log Out', url: '/folder/Spam', icon: 'log-out' },
+    { title: 'Sign In', url: '/login', icon: 'log-in',is_image:false },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor() {}

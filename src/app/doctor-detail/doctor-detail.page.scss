@@ -1,0 +1,70 @@
+.doctor-header{
+    height: 200px;
+}
+
+.new-background-color{
+    --background:#00c6ad !important;
+}
+
+.speciality-heading{
+    color: #ffdb7c;
+    font-size: 10px;
+    background: #fffaed;
+    padding: 3px 10px;
+    border: 1px solid #ffdb7c;
+}
+
+.doctor-location{
+    font-size:10px;
+    color: #b7b7b7;
+    margin: 8px 0px;
+}
+
+.dr-name{
+    margin-bottom: 0px;
+}
+
+.dr-content{
+    font-size: 11px;
+    color: #949494;
+}
+
+.dr-ranks{
+    width: 85px !important;
+    height: 60px !important;
+    margin-bottom: 15px;
+    margin-left: 20px;
+    border-radius: 10px;
+    background-color:#d3fbf6;
+    padding-top: 5px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.dr-counts-name{
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-weight: 500;
+    
+}
+
+.dr-counts{
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    font-weight: bolder;
+    color: #00c6ad;
+}
+
+.appoint{
+    position: fixed;
+    margin: 0 auto;
+    padding: 0 15%;
+    bottom: 0px;
+    z-index: 999999;
+}
+
+
+
+ 

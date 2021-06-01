@@ -1,0 +1,130 @@
+<ion-content class="back-image">
+
+  <div class="section " *ngIf="screen == 1">
+    <h3 class="color-white text-center">Login to Continue</h3>
+
+    <form #LoginFormH="ngForm" (ngSubmit)="loginForm(LoginFormH.value)">
+      <span class="color-white font-10">EMAIL ID</span>
+      <ion-item>
+        <ion-input class="input-set" name="email" type="email" ngModel required email></ion-input>
+      </ion-item>
+
+      <br> <br>
+
+      <span class="color-white font-10">Password</span>
+      <ion-item>
+        <ion-input class="input-set" name="password" type="password" ngModel required></ion-input>
+      </ion-item>
+
+      <br>
+      <div class="text-center ">
+        <ion-button expand="full" shape="round" color="success" type="submit" [disabled]="!LoginFormH.valid">Login
+        </ion-button>
+        <br>
+        <span class="color-white font-10">Don't have an account? </span><span (click)="screen = 2"
+          class="color-white font-10" style="text-decoration: underline;">Sign Up</span>
+        <br>
+        <span class="color-white font-10">- or -</span>
+        <br>
+        <ion-button expand="full" shape="round" color="primary">Login with OTP</ion-button>
+      </div>
+
+    </form>
+
+  </div>
+
+
+  <div class="section2 " *ngIf="screen == 2">
+    <h3 class="color-white text-center">Register as new user</h3>
+    <form #signup="ngForm" (ngSubmit)="signupform(signup.value)">
+
+      <ion-item>
+        <ion-label position="fixed" class="color-white font-10">Your Full Name</ion-label>
+        <ion-input name="name" type="text" ngModel required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed" class="color-white font-10">E-Mail ID</ion-label>
+        <ion-input name="email" type="email" email ngModel required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed" class="color-white font-10">Mobile Number</ion-label>
+        <ion-input name="phone" type="number" ngModel required maxlength="10"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed" class="color-white font-10">Gender</ion-label>
+        <ion-select name="gender" type="text" ngModel required>
+          <ion-select-option value="Female">Female</ion-select-option>
+          <ion-select-option value="Male">Male</ion-select-option>
+          <ion-select-option value="Other">Other</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed" class="color-white font-10">Height</ion-label>
+        <ion-input name="height" type="text" ngModel required maxlength="5"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed" class="color-white font-10">Weight</ion-label>
+        <ion-input name="weight" type="text" ngModel required maxlength="3"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed" class="color-white font-10">Blood Group</ion-label>
+        <ion-select name="blood" type="text" ngModel required>
+          <ion-select-option value="O-">O-</ion-select-option>
+          <ion-select-option value="O+">O+</ion-select-option>
+          <ion-select-option value="A-">A-</ion-select-option>
+          <ion-select-option value="A+">A+</ion-select-option>
+          <ion-select-option value="B-">B-</ion-select-option>
+          <ion-select-option value="B+">B+</ion-select-option>
+          <ion-select-option value="AB-">AB-</ion-select-option>
+          <ion-select-option value="AB+">AB+</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed" class="color-white font-10">Date of Birth</ion-label>
+        <ion-datetime name="birthday" ngModel required></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed" class="color-white font-10">Address</ion-label>
+        <ion-input name="address" ngModel></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed" class="color-white font-10">Password</ion-label>
+        <ion-input name="password" type="password" ngModel required (input)="Pass($event.target.value)"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed" class="color-white font-10">Confirm Password</ion-label>
+        <ion-input name="confirm-password" type="password" ngModel required (input)="ChangePass($event.target.value)">
+        </ion-input>
+      </ion-item>
+
+      <p *ngIf="passworderror" class="warning-form font-10">Password does not match</p>
+
+      <br> <br>
+      <div class="text-center ">
+        <ion-row>
+          <ion-col size="6">
+            <ion-button expand="full" shape="round" color="primary" (click)="screen = 1">Login</ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button expand="full" shape="round" color="success" [disabled]="!signup.valid && !passworderror" type="submit">Sign up
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div class="text-center ">
+      </div>
+    </form>
+  </div>
+
+
+</ion-content>

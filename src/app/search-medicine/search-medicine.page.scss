@@ -1,0 +1,66 @@
+.medicine-name{
+    margin: 0;
+    font-size: 12px;
+    font-weight: 500;
+    color: #000;
+}
+
+.pharama{
+    margin: 0;
+    font-size: 9px;
+    font-style: italic;
+}
+
+.pricetag{
+    margin: 0;
+    font-size: 12px;
+    color: #000;
+}
+
+.mrp{
+    font-size: 10px;
+    color: #989898;
+}
+
+.card-pm{
+    padding: 3px 7px !important;
+}
+
+.small-btn-mt{
+    margin-top: 10px;
+}
+
+.description{
+    font-size: 8px;font-size: 8px;
+    border-top: 2px dashed #eaeaea;
+    padding-top: 15px;
+}
+
+.footer-toolbar{
+    --background: transparent;
+
+    ion-title{
+        text-align:center
+    }
+}
+
+.background-transparent{
+    --background:transparent
+}
+
+.footer-content-main{
+    background:#f1f1f1;
+    padding-top:20px;
+    padding-bottom:20px;
+    height: 100%;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-top: 1px solid #00c6ad;
+}
+
+
+
+
+
+
+

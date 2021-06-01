@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Appointments</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card  *ngFor="let appointment of appointments_data">
+    <ion-row class="top-doctor-row">
+      <ion-col size="2" class="">
+        <div class="theme-green-background border-min text-center img-div"> <img class="doctor-top-img"
+            src="assets/sample/doctor.png"> </div>
+      </ion-col>
+      <ion-col size="10">
+        <ion-card-content>
+          <p class="doctor-name">{{appointment.name}}</p>
+          <p class="speciality"> {{appointment.speciality}} </p>
+          <p class="pdate"> {{api.Get_DateOnly(appointment.date)}}  {{appointment.time_start}} </p>
+        </ion-card-content>
+      </ion-col>
+    </ion-row>
+    <p class="borderline"> </p>
+    <div class="card-div">
+      <a href="tel:{{appointment.phone}}" class=" card-btm">Call Now</a>
+      <p class="card-btm" (click)="chat(appointment.doctor_id)">Chat</p>
+    </div>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,28 @@
+<ion-header class="doctor-header theme-green-background">
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-searchbar animated class="searchbar"></ion-searchbar>
+
+  <ion-card (click)="Detail_Page(doctors.user_id)" *ngFor="let doctors of all_doctors">
+    <ion-row class="top-doctor-row">
+      <ion-col size="3" class="theme-green-background border-min text-center"> 
+        <img class="doctor-top-img" src="{{Img_Path}}doctors/{{doctors.image}}">
+      </ion-col>
+      <ion-col size="9">
+        <ion-card-content>
+          <p class="top-doctor-p-name">{{doctors.name}}</p>
+          <p class="top-doctor-p-speciality">{{doctors.city}}, {{doctors.state}}</p>
+          <p class="top-doctor-p-speciality">{{doctors.rating}} <ion-icon name="star" style="    color: #ffb50f;"></ion-icon> {{doctors.speciality}} Specialist</p>
+        </ion-card-content>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+</ion-content>

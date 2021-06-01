@@ -1,0 +1,62 @@
+<ion-header class="doctor-header theme-green-background">
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <div class="text-center">
+    <img class="doctor-slide-img" src="{{Img_Path}}doctors/{{Doctor_Data.image}}" style="height:162px">
+  </div>
+
+</ion-header>
+
+<ion-content>
+
+  <div class="main-section">
+    <h4 class="dr-name">Dr. {{Doctor_Data.name}}</h4>
+    <h6 class="doctor-location">
+      <ion-icon name="location-outline"></ion-icon> {{Doctor_Data.city}}, {{Doctor_Data.state}}
+    </h6>
+
+    <span class="speciality-heading">{{Doctor_Data.speciality}} Specialist</span>
+
+
+    <ion-row style="width: 100%;">
+
+      <ion-col size="4" class=" text-center">
+        <div class="dr-ranks text-center">
+          <p class="dr-counts">{{Doctor_Data.patient}}</p>
+          <p class="dr-counts-name">Patients</p>
+        </div>
+      </ion-col>
+
+      <ion-col size="4" class=" text-center">
+        <div class="dr-ranks text-center">
+          <p class="dr-counts">{{Doctor_Data.experience}}</p>
+          <p class="dr-counts-name">Years Exp.</p>
+        </div>
+      </ion-col>
+
+      <ion-col size="4" class=" text-center">
+        <div class="dr-ranks text-center">
+          <p class="dr-counts">{{Doctor_Data.rating}}</p>
+          <p class="dr-counts-name">Rating</p>
+        </div>
+      </ion-col>
+
+    </ion-row>
+
+    <p class="dr-content">
+      {{Doctor_Data.description}}
+    </p>
+
+    <div class="text-center appoint ">
+      <ion-button expand="full" shape="round" color="dgreen" class="small-button" (click)="appointment()">Book an Appointment</ion-button>
+    </div>
+
+  </div>
+
+  
+
+</ion-content>

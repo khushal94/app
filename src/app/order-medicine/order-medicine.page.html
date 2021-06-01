@@ -1,0 +1,69 @@
+<ion-header class="doctor-header theme-green-background">
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+   
+
+  </ion-toolbar>
+
+  <div class="upload_design">
+    <img *ngIf="image_selected" [src]="Binary_Prescription" style="width:80%;height:80%"/>
+    <p *ngIf="!image_selected" style="    margin-bottom: 0;"><ion-icon style="font-size: 75px; margin-bottom: 0px; color:#fff" name="reader-outline"></ion-icon></p>
+    <p *ngIf="!image_selected" style="margin-top: 0px; color:#fff;    font-size: 12px;">Upload Prescription</p>
+  </div>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-row class="margin-top-btm"> 
+    <ion-col size="6" class="text-center"> 
+      <ion-button class="btn-resize" color="light" (click)="GetGallery()" shape="round"><ion-icon style="margin-right: 8px;" name="image-outline"></ion-icon> Gallery</ion-button>
+    </ion-col>
+    <ion-col size="6" class="text-center"> 
+      <ion-button class="btn-resize" color="light" (click)="GetPicture()" shape="round"><ion-icon style="margin-right: 8px;" name="camera-outline"></ion-icon> Camera</ion-button>
+
+    </ion-col>
+  </ion-row>
+
+
+  <ion-toolbar>
+    <ion-title size="small">Recent Prescriptions</ion-title>
+  </ion-toolbar>
+
+  <ion-card >
+    <ion-row class="top-doctor-row">
+      <ion-col size="3" class="theme-green-background border-min text-center"> 
+
+      </ion-col>
+      <ion-col size="9">
+        <ion-card-content>
+        
+        </ion-card-content>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <ion-card >
+    <ion-row class="top-doctor-row">
+      <ion-col size="3" class="theme-green-background border-min text-center"> 
+
+      </ion-col>
+      <ion-col size="9">
+        <ion-card-content>
+        
+        </ion-card-content>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  
+
+
+
+  
+
+ 
+</ion-content>

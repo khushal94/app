@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>My Profile</ion-title>
+   
+  </ion-toolbar>
+
+  
+</ion-header>
+
+<ion-content>
+
+  <div class="profile-section">
+    <br>
+    <ion-avatar style="margin:0 auto" (click)="GetGallery()" *ngIf="ShowUploaded">
+      <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+    </ion-avatar>
+    <ion-avatar style="margin:0 auto" (click)="GetGallery()" *ngIf="!ShowUploaded">
+      <img [src]="Binary_Prescription">
+    </ion-avatar>
+    <p style="color:#00c6ad;font-size: 12px;margin: 0;">Edit Profile Picture</p>
+  </div>
+  <form #updateuser="ngForm" (ngSubmit)="updateform(updateuser.value)">
+
+    <ion-item>
+      <ion-label position="fixed" class="color-white font-10">Full Name</ion-label>
+      <ion-input name="name" type="text" ngModel required [value]="UserData.name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed" class="color-white font-10">E-Mail ID</ion-label>
+      <ion-input name="email" type="email" email ngModel required disabled [value]="UserData.email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed" class="color-white font-10">Mobile Number</ion-label>
+      <ion-input name="phone" type="number" ngModel required maxlength="10" disabled [value]="UserData.phone"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed" class="color-white font-10">Gender</ion-label>
+      <ion-select name="gender" type="text" ngModel required [value]="UserData.gender">
+        <ion-select-option value="Female">Female</ion-select-option>
+        <ion-select-option value="Male">Male</ion-select-option>
+        <ion-select-option value="Other">Other</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed" class="color-white font-10">Height</ion-label>
+      <ion-input name="height" type="text" ngModel required maxlength="5" [value]="UserData.height"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed" class="color-white font-10">Weight</ion-label>
+      <ion-input name="weight" type="text" ngModel required maxlength="3" [value]="UserData.weight"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed" class="color-white font-10">Blood Group</ion-label>
+      <ion-select name="blood" type="text" ngModel required [value]="UserData.blood">
+        <ion-select-option value="O-">O-</ion-select-option>
+        <ion-select-option value="O+">O+</ion-select-option>
+        <ion-select-option value="A-">A-</ion-select-option>
+        <ion-select-option value="A+">A+</ion-select-option>
+        <ion-select-option value="B-">B-</ion-select-option>
+        <ion-select-option value="B+">B+</ion-select-option>
+        <ion-select-option value="AB-">AB-</ion-select-option>
+        <ion-select-option value="AB+">AB+</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed" class="color-white font-10">Date of Birth</ion-label>
+      <ion-datetime name="birthday" ngModel required [value]="UserData.birthday"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed" class="color-white font-10">Address</ion-label>
+      <ion-input name="address" ngModel [value]="UserData.address"></ion-input>
+    </ion-item>
+
+   <div class="text-center"> <ion-button color="dgreen" type="submit" shape="round" class="small-button margin-center" [disabled]="!updateuser.valid">Update</ion-button> </div>
+  </form>
+
+
+
+</ion-content>

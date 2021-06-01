@@ -1,0 +1,60 @@
+<ion-content class="new-background-color">
+
+  <div *ngIf="slide == 1">
+    <div class="banner-slide"> <img src="assets/slide1.png"> </div>
+    <div class="slide-section text-center">
+      <ion-toolbar>
+        <ion-title size="small" class="title">Find Doctors & Nurses</ion-title>
+      </ion-toolbar>
+      <p class="para-margin-btm">
+        Morbi nec sapien lectus. Phasellus est erat, porttitor ut tortor nec, faucibus iaculis ipsum. Cras nec massa
+        imperdiet, rhoncus ex id, cursus neque. Ut non dolor sodales, dapibus enim eget, maximus magna.
+      </p>
+      <p class="dots-on" (click)="slide = 1"> </p>
+      <p class="dots-off" (click)="slide = 2"> </p>
+      <p class="dots-off" (click)="slide = 3"> </p>
+      <br>
+      <ion-button expand="full" shape="round" color="dgreen" (click)="slide = 2" class="button-margin-top">Next</ion-button>
+      <ion-button expand="full" shape="round" color="dgreen" fill="outline" (click)="Dashboard()">Skip</ion-button>
+    </div>
+  </div>
+
+  <div *ngIf="slide == 2">
+    <div class="banner-slide"> <img src="assets/slide2.png"> </div>
+    <div class="slide-section text-center">
+      <ion-toolbar>
+        <ion-title size="small" class="title">Manage Appointments</ion-title>
+      </ion-toolbar>
+      <p class="para-margin-btm">
+        Morbi nec sapien lectus. Phasellus est erat, porttitor ut tortor nec, faucibus iaculis ipsum. Cras nec massa
+        imperdiet, rhoncus ex id, cursus neque. Ut non dolor sodales, dapibus enim eget, maximus magna.
+      </p>
+      <p class="dots-off" (click)="slide = 1"> </p>
+      <p class="dots-on" (click)="slide = 2"> </p>
+      <p class="dots-off" (click)="slide = 3"> </p>
+      <br>
+      <ion-button expand="full" shape="round" color="dgreen" (click)="slide = 3" class="button-margin-top">Next</ion-button>
+      <ion-button expand="full" shape="round" color="dgreen" fill="outline" (click)="Dashboard()">Skip</ion-button>
+    </div>
+  </div>
+
+  <div *ngIf="slide == 3">
+    <div class="banner-slide"> <img src="assets/slide3.png"> </div>
+    <div class="slide-section text-center">
+      <ion-toolbar>
+        <ion-title size="small" class="title">Consult With A Doctor</ion-title>
+      </ion-toolbar>
+      <p class="para-margin-btm">
+        Morbi nec sapien lectus. Phasellus est erat, porttitor ut tortor nec, faucibus iaculis ipsum. Cras nec massa
+        imperdiet, rhoncus ex id, cursus neque. Ut non dolor sodales, dapibus enim eget, maximus magna.
+      </p>
+      
+      <p class="dots-off" (click)="slide = 1"> </p>
+      <p class="dots-off" (click)="slide = 2"> </p>
+      <p class="dots-on" (click)="slide = 3"> </p>
+      <br>
+      <ion-button expand="full" shape="round" color="dgreen" (click)="Dashboard()" class="button-margin-top">Continue</ion-button>
+    </div>
+  </div>
+
+</ion-content>

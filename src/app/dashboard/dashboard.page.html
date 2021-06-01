@@ -1,0 +1,82 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ folder }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-slides pager="false" [options]="slideOpts" class="top-slides" (click)="Detail_Page(doctors.user_id)">
+
+    <ion-slide *ngFor="let doctors of top_doctors" class="theme-green-background">
+      <ion-icon name="arrow-forward-outline"></ion-icon>
+      <ion-row style="    width: 100%;">
+        <ion-col size="6" style="padding-left: 12px;text-align: left;">
+          <p class="doctor-name-slide1 doctor-name-slide">Dr.</p>
+          <p class="doctor-name-slide2 doctor-name-slide" >{{doctors.name}}</p>
+          <!-- <p class="doctor-name-slide2 doctor-name-slide">Alexender</p> -->
+          <p class="doctor-name-slide3 doctor-name-slide">{{doctors.speciality}}</p>
+        </ion-col>
+        <ion-col size="6"> 
+          <img class="doctor-slide-img" src="{{Img_Path}}doctors/{{doctors.image}}" >
+        </ion-col>
+      </ion-row>
+    </ion-slide>
+
+</ion-slides>
+
+
+  <!-- -------------------------------------------------------------slide ends--------------------------------------------------------------------------- -->
+
+  <ion-toolbar>
+    <ion-title size="small">Categories</ion-title>
+  </ion-toolbar>
+
+
+  <ion-slides pager="false" [options]="slideOpts" class="category-slides">
+
+
+    <ion-slide (click)="Doctor_Listing_Page(spec.name)" *ngFor="let spec of speciality">
+      <ion-row style="width: 100%;">
+        <ion-col size="12">
+          <ion-icon [name]="spec.icon" class="category-slide-icon"></ion-icon>
+          <p class="category-slide-name">{{spec.name}}</p>
+          <p class="category-slide-type">Specialist</p>
+        </ion-col>
+      </ion-row>
+    </ion-slide>
+
+
+  </ion-slides>
+
+
+
+  <ion-toolbar>
+    <ion-title size="small">Top Rated Doctors</ion-title>
+  </ion-toolbar>
+
+
+
+  <ion-card (click)="Detail_Page(doctors.user_id)" *ngFor="let doctors of featured_doctors">
+    <ion-row class="top-doctor-row">
+      <ion-col size="3" class="theme-green-background border-min text-center"> 
+        <img class="doctor-top-img" src="{{Img_Path}}doctors/{{doctors.image}}">
+      </ion-col>
+      <ion-col size="9">
+        <ion-card-content>
+          <p class="top-doctor-p-rating">{{doctors.rating}} <ion-icon name="star" style="    color: #ffb50f;"></ion-icon></p>
+          <p class="top-doctor-p-name">{{doctors.name}}</p>
+          
+          <p class="top-doctor-p-speciality">{{doctors.speciality}} Specialist</p>
+        </ion-card-content>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+
+
+</ion-content>
+

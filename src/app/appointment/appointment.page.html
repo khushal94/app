@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Book an Appointment</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="back">
+
+  <ion-card>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card-content>
+          <form #AppointForm="ngForm" (ngSubmit)="AppointFormSubmit(AppointForm.value)">
+            <ion-item>
+              <ion-label position="fixed" type="date">Select Date</ion-label>
+              <ion-datetime [min]="current_date" value="2019-10-01T15:43:40.394Z" display-timezone="utc" pickerFormat="YYYY-MM-DD" name="date" ngModel required></ion-datetime>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="fixed" type="date">Select Time</ion-label>
+              <ion-datetime value="2019-10-01T15:43:40.394Z" display-timezone="utc" displayFormat="hh:mm" name="time_start" ngModel required></ion-datetime>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="fixed" type="date">Health Issues</ion-label>
+              <ion-textarea rows="6" cols="20" placeholder="Please mention your health issues?" name="description" ngModel></ion-textarea>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>is this your first appointment?</ion-label>
+              <ion-checkbox name="first_time" ngModel></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>are you facing Covid 19 symptoms?</ion-label>
+              <ion-checkbox name="covid_symptoms" ngModel></ion-checkbox>
+            </ion-item>
+            <br>
+            <br>
+            <ion-button expand="full" shape="round" color="dgreen" type="submit" [disabled]="!AppointForm.valid">Book Now</ion-button>
+          </form>
+        </ion-card-content>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>

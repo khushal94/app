@@ -1,0 +1,26 @@
+.profile-section{
+    text-align: center;
+}
+
+ion-input, ion-select, ion-datetime{
+    // border-bottom: 1px solid #e2e2e2;
+    font-size:10px;
+}
+
+form{
+    margin:0px 50px
+}
+
+
+ion-toolbar{
+    color: #fff;
+    --background: #00c6ad !important;
+}
+
+.update-btn{
+    position: absolute;
+    right: 15px;
+    top: 8px;
+    font-size: 24px;
+    font-weight: bolder;
+}
