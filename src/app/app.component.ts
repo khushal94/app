@@ -12,6 +12,7 @@ export class AppComponent {
     // { title: 'Emergency', url: '/folder/Archived', icon: 'heart' },
     { title: 'Upload Prescription', url: '/order-medicine', icon: 'bandage',is_image:false },
     { title: 'Order Medicine', url: '/search-medicine', image:'assets/medicine-icon.png', is_image:true },
+    { title: 'My Orders', url: '/orders', icon: 'cart',is_image:false },
     { title: 'FAQ', url: '/faq', icon: 'help',is_image:false },
     { title: 'Support', url: '/support', icon: 'people-circle',is_image:false },
     { title: 'Our Mission & Vision', url: '/vision', icon: 'bulb',is_image:false },

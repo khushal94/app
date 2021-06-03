@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>My Orders</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="custom-dgreen">
+
+  <ion-card (click)="Detail_Page(order.user_id)" *ngFor="let order of AllOrder">
+    <ion-row class="top-doctor-row">
+      <ion-col size="12">
+        <ion-card-content>
+          <p class="font-10"><span>Order recieved on: {{api.Get_DateTimeLocal(order.created_at)}}</span></p>
+          <p class="font-10"><span *ngFor="let medicines of order.medicines" style="font-size: 8px;">{{medicines.trade_name}}</span></p>
+          <p class="font-10" *ngIf="order.status == 'Pending'" style="color: #0aa900;"><span>Order Created</span></p>
+          <p class="font-10" *ngIf="order.status == 'Processing'" style="color: #fa9818;"><span>Order Created</span></p>
+          <p class="font-10" *ngIf="order.status == 'Dispatched'" style="color: #0069af;"><span>Order Created</span></p>
+          <p class="font-10" *ngIf="order.status == 'Delivered'" style="color: #12884d;"><span>Order Created</span></p>
+
+          <p class="font-10" *ngIf="order.is_paid == 0" style="color: #fa9818;"><span>Payment : Pending</span></p>
+          <p class="font-10" *ngIf="order.is_paid == 1" style="color: #0aa900;"><span>Payment : Paid</span></p>
+        </ion-card-content>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+</ion-content>
