@@ -52,6 +52,26 @@
 
   </ion-slides>
 
+  <ion-toolbar>
+    <ion-title size="small">Offers</ion-title>
+  </ion-toolbar>
+
+
+  <ion-slides pager="false" [options]="slideOpts" class="coupon-slides">
+
+
+    <ion-slide  *ngFor="let coupon of coupons">
+      <ion-row style="width: 100%;">
+        <ion-col size="12">
+          <img src="{{Img_Path}}{{coupon.image}}">
+          
+          </ion-col>
+      </ion-row>
+    </ion-slide>
+
+
+  </ion-slides>
+
 
 
   <ion-toolbar>

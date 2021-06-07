@@ -9,16 +9,18 @@
 
 <ion-content>
 
-  <ion-card (click)="Detail_Page(nurse.user_id)" *ngFor="let nurse of NursesData">
+  <ion-card (click)="Detail_Page(nurse)" *ngFor="let nurse of NursesData">
     <ion-row class="top-doctor-row">
-      <ion-col size="3" class="theme-green-background border-min text-center"> 
-        <img class="doctor-top-img" src="{{Img_Path}}nurse/{{nurse.image}}">
+      <ion-col size="3" class="theme-green-background border-min text-center">
+        <img class="doctor-top-img" src="{{IMG_Path_Cla}}{{nurse.image}}">
       </ion-col>
       <ion-col size="9">
         <ion-card-content>
           <p class="top-doctor-p-name">{{nurse.name}}</p>
           <p class="top-doctor-p-speciality">{{nurse.city}}, {{nurse.state}}</p>
-          <p class="top-doctor-p-speciality">{{nurse.rating}} <ion-icon name="star" style="    color: #ffb50f;"></ion-icon></p>
+          <p class="top-doctor-p-speciality">{{nurse.rating}} <ion-icon name="star" style="    color: #ffb50f;">
+            </ion-icon>
+          </p>
         </ion-card-content>
       </ion-col>
     </ion-row>
@@ -26,3 +28,64 @@
 
 </ion-content>
 
+
+<lib-ionic-pullup *ngIf="ShowFooter" (onExpand)="footerExpanded()" (onCollapse)="footerCollapsed()"
+  [(state)]="footerState" [toolbarTopMargin]="150" [minBottomVisible]="50">
+
+  <ion-toolbar class="footer-toolbar" (click)="toggleFooter()" #ionDragFooter>
+    <ion-title>
+      <ion-icon *ngIf="footerState == 0" name="chevron-up-outline"></ion-icon>
+      <ion-icon *ngIf="footerState == 1" name="chevron-down-outline"></ion-icon>
+    </ion-title>
+  </ion-toolbar>
+  <ion-content class="background-transparent">
+    <div class="footer-content-main">
+
+      <ion-card>
+        <ion-row>
+
+          <ion-avatar class="nurse-detail-img">
+            <img src="{{IMG_Path_Cla}}{{SelectedNurse.image}}">
+          </ion-avatar>
+
+
+          <div class="main-section">
+            <h4 class="dr-name">{{SelectedNurse.name}}
+
+            </h4>
+            <h6 class="doctor-location">
+              <ion-icon name="location-outline"></ion-icon> {{SelectedNurse.city}}, {{SelectedNurse.state}}
+            </h6>
+
+
+            <p class="dr-content">
+              {{SelectedNurse.description}}
+            </p>
+
+
+            <ion-item>
+              <ion-label position="fixed" type="date">Select Date</ion-label>
+              <ion-datetime [min]="current_date" value="2019-10-01T15:43:40.394Z" display-timezone="utc" pickerFormat="YYYY-MM-DD" name="date" [(ngModel)]="date" required></ion-datetime>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="fixed" type="date">Select Time</ion-label>
+              <ion-datetime value="2019-10-01T15:43:40.394Z" display-timezone="utc" displayFormat="hh:mm" name="time_start" [(ngModel)]="time" required></ion-datetime>
+            </ion-item>
+
+          </div>
+
+        </ion-row>
+      </ion-card>
+
+
+      <div class="text-center">
+        <ion-button color="dgreen" shape="round" size="" (click)="BookNurse()" class="small-btn">Book Visit</ion-button>
+      </div>
+
+      <br>
+
+
+    </div>
+  </ion-content>
+</lib-ionic-pullup>

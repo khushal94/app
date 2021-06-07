@@ -8,24 +8,68 @@
 </ion-header>
 
 <ion-content>
-  <ion-card  *ngFor="let appointment of appointments_data">
-    <ion-row class="top-doctor-row">
-      <ion-col size="2" class="">
-        <div class="theme-green-background border-min text-center img-div"> <img class="doctor-top-img"
-            src="assets/sample/doctor.png"> </div>
-      </ion-col>
-      <ion-col size="10">
-        <ion-card-content>
-          <p class="doctor-name">{{appointment.name}}</p>
-          <p class="speciality"> {{appointment.speciality}} </p>
-          <p class="pdate"> {{api.Get_DateOnly(appointment.date)}}  {{appointment.time_start}} </p>
-        </ion-card-content>
-      </ion-col>
-    </ion-row>
-    <p class="borderline"> </p>
-    <div class="card-div">
-      <a href="tel:{{appointment.phone}}" class=" card-btm">Call Now</a>
-      <p class="card-btm" (click)="chat(appointment.doctor_id)">Chat</p>
-    </div>
-  </ion-card>
+  <ion-tabs class="custom-tabs">
+    <ion-tab-bar slot="top">
+      <ion-tab-button (click)="ShowSection = 1" class="firstbutton">
+        <!-- <ion-icon name="calendar"></ion-icon> -->
+        <ion-label [ngClass]="{'theme-green-color' : ShowSection == 1}" >Appointments</ion-label>
+        <ion-badge>{{appointments_data.length}}</ion-badge>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="ShowSection = 2">
+        <!-- <ion-icon name="calendar"></ion-icon> -->
+        <ion-label [ngClass]="{'theme-green-color' : ShowSection == 2}">Nurse Visit</ion-label>
+        <ion-badge> {{AllNurse_Bookings.length}}</ion-badge>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+
+  <br><br>
+
+  <div class="" *ngIf="ShowSection == 1">
+
+    <ion-card *ngFor="let appointment of appointments_data">
+      <ion-row class="top-doctor-row">
+        <ion-col size="2" class="">
+          <div class="theme-green-background border-min text-center img-div"> <img class="doctor-top-img"
+              src="{{imgpath}}{{appointment.image}}"> </div>
+        </ion-col>
+        <ion-col size="10">
+          <ion-card-content>
+            <p class="doctor-name">{{appointment.name}}</p>
+            <p class="speciality"> {{appointment.speciality}} </p>
+            <p class="pdate"> {{api.Get_DateOnly(appointment.date)}} {{appointment.time_start}} </p>
+          </ion-card-content>
+        </ion-col>
+      </ion-row>
+      <p class="borderline"> </p>
+      <div class="card-div">
+        <a href="tel:{{appointment.phone}}" class=" card-btm">Call Now</a>
+        <p class="card-btm" (click)="chat(appointment.doctor_id)">Chat</p>
+      </div>
+    </ion-card>
+  </div>
+
+  <div class="" *ngIf="ShowSection == 2">
+    <ion-card *ngFor="let nurseappoint of AllNurse_Bookings">
+      <ion-row class="top-doctor-row">
+        <ion-col size="2" class="">
+          <div class="theme-green-background border-min text-center img-div"> <img class="doctor-top-img"
+              src="{{imgpath}}{{nurseappoint.image}}"> </div>
+        </ion-col>
+        <ion-col size="10">
+          <ion-card-content>
+            <p class="doctor-name">{{nurseappoint.name}}</p>
+            <p class="pdate"> {{api.Get_DateOnly(nurseappoint.visit_date)}} {{nurseappoint.visit_time}} </p>
+          </ion-card-content>
+        </ion-col>
+      </ion-row>
+      <!-- <p class="borderline"> </p> -->
+      <!-- <div class="card-div">
+        <a href="tel:{{appointment.phone}}" class=" card-btm">Call Now</a>
+        <p class="card-btm" (click)="chat(appointment.doctor_id)">Chat</p>
+      </div> -->
+    </ion-card>
+  </div>
+
 </ion-content>

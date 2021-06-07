@@ -14,7 +14,12 @@
 <ion-content>
 
   <div class="main-section">
-    <h4 class="dr-name">Dr. {{Doctor_Data.name}}</h4>
+    <h4 class="dr-name">Dr. {{Doctor_Data.name}} 
+      
+      <ion-icon *ngIf="Doctor_Data.is_available == 1" class="online" name="ellipse"></ion-icon>
+      <ion-icon *ngIf="Doctor_Data.is_available == 0" class="offline" name="ellipse"></ion-icon>
+    
+    </h4>
     <h6 class="doctor-location">
       <ion-icon name="location-outline"></ion-icon> {{Doctor_Data.city}}, {{Doctor_Data.state}}
     </h6>

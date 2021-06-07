@@ -20,6 +20,7 @@ export class DashboardPage implements OnInit {
   public featured_doctors = [];
   public Img_Path = IMG_Path;
   public speciality = [];
+  public coupons = [];
   public lat:any;
   public long:any;
   constructor(public router:Router, public api:ApiService,
@@ -44,6 +45,7 @@ export class DashboardPage implements OnInit {
             this.AllData = data.data;
             this.top_doctors = this.AllData.top_doctors;
             this.featured_doctors = this.AllData.doctors_featured;
+            this.coupons = this.AllData.coupons;
 
             console.log(this.top_doctors, 'top_doctors', this.featured_doctors, 'featured_doctors');
             

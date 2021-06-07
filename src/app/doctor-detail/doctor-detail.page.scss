@@ -67,4 +67,18 @@
 
 
 
- 
+ .online{
+    position: absolute;
+    right: 20px;
+    font-size: 12px;
+    margin-top: 6px;
+    color: #00c700;
+ }
+
+ .offline{
+    position: absolute;
+    right: 20px;
+    font-size: 12px;
+    margin-top: 6px;
+    color: #f7a52c;
+ }

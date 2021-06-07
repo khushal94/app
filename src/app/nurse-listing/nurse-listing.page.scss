@@ -1,0 +1,43 @@
+.footer-toolbar{
+    --background: transparent;
+
+    ion-title{
+        text-align:center
+    }
+}
+
+.background-transparent{
+    --background:transparent
+}
+
+.footer-content-main{
+    background:#f1f1f1;
+    padding-top:20px;
+    padding-bottom:20px;
+    height: 100%;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-top: 1px solid #00c6ad;
+}
+
+.nurse-detail-img{
+    height: 110px;
+    width: 110px;
+    margin: 20px auto;
+
+}
+
+.doctor-location{
+    font-size:10px;
+    color: #b7b7b7;
+    margin: 8px 0px;
+}
+
+.dr-content{
+    font-size: 11px;
+    color: #949494;
+}
+
+ion-input, ion-label{
+    font-size:10px !important
+}

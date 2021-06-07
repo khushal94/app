@@ -93,6 +93,13 @@ ion-menu-toggle ion-item {
   font-size: 10px !important;
 }
 
+.font-8 {
+  font-size: 8px !important;
+}
+.grey-back{
+  background: #f1f1f1;
+}
+
 :root {
   --ion-color-dgreen: #00c6ad;
   --ion-color-dgreen-rgb: 255, 215, 0;
@@ -219,3 +226,22 @@ ion-card,
 .margin-center{
   margin: 0 auto
 }
+
+.custom-tabs ion-tab-bar{
+  height: 30px;
+    margin-top: 10px;
+}
+
+.custom-tabs .firstbutton{
+  border-right: 1px solid #f2f2f2;
+}
+
+.custom-tabs ion-label{
+  font-size: 11px;
+}
+
+.custom-tabs ion-badge{
+  top: 1px !important;
+}
+
+

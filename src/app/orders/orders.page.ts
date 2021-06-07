@@ -11,6 +11,8 @@ import {ApiService, IMG_Path} from '../../service';
 export class OrdersPage implements OnInit {
 
   public AllOrder = [];
+  public AllLabTest = [];
+  public ShowSection:number = 1;
 
   constructor(public router:Router, public api:ApiService) { 
 
@@ -19,6 +21,7 @@ export class OrdersPage implements OnInit {
   ngOnInit() {
 
     this.My_Orders();
+    this.LabTest();
 
   }
 
@@ -34,6 +37,20 @@ export class OrdersPage implements OnInit {
     },err=>{
       this.api.showToast('Server Error Occured, Please Try After Sometime '+err, 4000);
     })
+  }
+
+  LabTest(){
+    this.api.POST('get-labtest-orders',{user_id:this.api.Get_UserId()}).subscribe(data=>{
+      if(data.status == true){
+        this.AllLabTest = data.data;
+      }else{
+        this.api.showToast(data.msg, 4000);
+      }
+
+    },err=>{
+      this.api.showToast('Server Error Occured, Please Try After Sometime '+err, 4000);
+    })
+    
   }
 
 }

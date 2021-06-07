@@ -19,6 +19,7 @@ export class OrderMedicinePage implements OnInit {
   public advices: string = '';
   public AllPres = [];
   public Img_Path = IMG_Path;
+  public options: any;
 
   constructor(public camera: Camera, public router: Router, public api: ApiService) { }
 
@@ -28,29 +29,73 @@ export class OrderMedicinePage implements OnInit {
   }
 
   payWithRazorpay() {
-    var options = {
-      description: 'Credits towards consultation',
-      image: 'https://i.imgur.com/3g7nmJC.png',
-      order_id: 'order_DBJOWzybf0sJbb',
-      currency: 'INR',
-      key: '<YOUR_KEY_ID>',
-      amount: '5000',
-      name: 'Acme Corp',
-      theme: {
-        color: '#3399cc'
+    this.options = {
+      "key": "rzp_test_SF1Xn1tfhexJK5", // Enter the Key ID generated from the Dashboard
+      "amount": "", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      "currency": "",
+      "name": "",
+      "description": "Test Transaction",
+      "image": "",
+    //  "order_id": "", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      "handler": (response: any) => {
+        // return response
+        this.razorpayHandler(response);
+        // alert('Payment Id '+response.razorpay_payment_id);
+        // alert('Order Id '+response.razorpay_order_id);
+        // alert('Signature '+response.razorpay_signature);
+      },
+      "prefill": {
+        "name": "",
+        "email": "",
+        "contact": ""
+      },
+      "notes": {
+        "address": "Razorpay Corporate Office"
+      },
+      "theme": {
+        "color": "#e21224"
       }
-    }
-    var successCallback = function (success) {
-      alert('payment_id: ' + success.razorpay_payment_id)
-      var orderId = success.razorpay_order_id
-      var signature = success.razorpay_signature
-    }
-    var cancelCallback = function (error) {
-      alert(error.description + ' (Error ' + error.code + ')')
-    }
-    RazorpayCheckout.on('payment.success', successCallback)
-    RazorpayCheckout.on('payment.cancel', cancelCallback)
-    RazorpayCheckout.open(options)
+    };
+
+
+    this.options.amount = '2000';
+    this.options.currency = 'INR';
+    this.options.name = 'Khushal Yadav';
+  //  this.options.order_id = 'order1212';
+    this.options.prefill.name = 'Khushal Yadav';
+    this.options.prefill.email = 'Khushal.yadav@outlook.com';
+    this.options.prefill.contact = '9785558507';
+    //this.options.image = this.user_all_data.profile_img ? this._apiRequest.getAbsolutePath(this.user_all_data.profile_img) : "https://www.jusbid.in/assets/images/logos/Jusbid_logo.png";
+    const instance = new this.nativeWindow.Razorpay(
+      this.options
+    );
+    instance.open();
+
+  }
+
+  window(): any {
+    // return the global native browser window object
+    return window;
+  }
+
+  get nativeWindow(): any {
+    return window;
+  }
+
+
+  razorpayHandler(response: any) {
+    console.log("response", response);
+    // let obj = {
+    //   userId: this.userData.userId,
+    //   username: this.obj.name,
+    //   bid_id: this.obj.bidId,
+    //   hotel_id: this.obj.hotel_id,
+    //   hotel_name: this.obj.hotel_name,
+    //   amount: this.obj.amount,
+    //   rzp_payment_id: response.razorpay_payment_id,
+    //   rzp_order_id: response.razorpay_order_id,
+    //   rzp_signature: response.razorpay_signature,
+    // }
   }
 
   My_Pres() {

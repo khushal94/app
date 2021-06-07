@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Lab Tests</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="custom-content-back">
+  <br>
+  <div class="">
+    <ion-title style="font-size:14px;padding: 0px 20px;">Packages</ion-title>
+
+
+    <ion-row style="padding: 0px 5px;">
+      <ion-col size="6" *ngFor="let package of Get_Packages" (click)="SelectPackage(package)">
+        <ion-card>
+          <ion-card-content class="no-mp">
+            <img src="{{img_path}}{{package.image}}">
+          </ion-card-content>
+          <div class="no-mp " style="line-height: 10px; padding: 0px 0 10px 10px;">
+            <span class="font-10" style="color: #000;font-weight: 600;">{{package.name}}</span><br>
+            <span class="font-8">{{package.lab_name}}</span>
+          </div>
+          <p class="p-border"> </p>
+          <div class="no-mp " style="line-height: 5px; padding: 10px 10px 15px 9px;">
+            <span class="font-10" style="color: #000;font-weight: 600;float: left;">₹{{package.rate}}</span>
+            <span class="font-10" style="color: #00c6ad;font-weight: 600;float:right">Buy</span>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
+  <br>
+
+  <ion-title style="font-size:14px;    padding: 0px 20px;">Popular Tests</ion-title>
+
+  <div class="section-padding">
+
+    <!-- <ion-title style="font-size:14px;    padding: 0px 14px;">Popular Tests</ion-title> -->
+
+    <ion-item *ngFor="let test of AllTests" class="test-items">
+      <ion-label>
+        {{test.test_name}}
+      </ion-label>
+      <ion-icon (click)="AddMenu(test)" name="add-circle-outline"></ion-icon>
+    </ion-item>
+
+  </div>
+  <br> <br>
+
+
+  <div class="text-center">
+    <ion-button [disabled]="OrderLabTest.length==0" color="dgreen" shape="round" size="" (click)="PlaceOrder()">Place
+      Order</ion-button>
+  </div>
+
+
+
+
+  <lib-ionic-pullup *ngIf="ShowFooter" (onExpand)="footerExpanded()" (onCollapse)="footerCollapsed()" [(state)]="footerState"
+  [toolbarTopMargin]="150" [minBottomVisible]="50">
+
+  <ion-toolbar class="footer-toolbar" (click)="toggleFooter()" #ionDragFooter>
+    <ion-title>
+      <ion-icon *ngIf="footerState == 0" name="chevron-up-outline"></ion-icon>
+      <ion-icon *ngIf="footerState == 1" name="chevron-down-outline"></ion-icon>
+    </ion-title>
+  </ion-toolbar>
+  <ion-content class="background-transparent">
+    <div class="footer-content-main">
+
+      <ion-card *ngFor="let medicines of OrderLabTest;let i=index">
+        <ion-row class="top-doctor-row card-pm">
+          <ion-col size="9" class="no-margin-padding " (click)="ShowDetails()">
+            <p class="medicine-name">{{medicines.test_name}}</p>
+            <p class="pricetag">₹{{medicines.rate}}</p>
+          </ion-col>
+          <ion-col size="3" class="no-margin-padding text-center">
+            <ion-button expand="full" shape="round" color="dgreen" class="small-btn small-btn-mt" (click)="RemoveMenu(i)">
+              <ion-icon name="add-outline"></ion-icon> Remove
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="top-doctor-row card-pm" *ngIf="DetailsShow == true">
+          <ion-col size="12" class="no-margin-padding ">
+            <p class="description">{{medicines.description}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+
+      <ion-card *ngIf="showpackage != {}">
+        <ion-row class="top-doctor-row card-pm">
+          <ion-col size="9" class="no-margin-padding " (click)="ShowDetails()">
+            <p class="medicine-name">{{showpackage.name}}</p>
+            <p class="pricetag">₹{{showpackage.rate}}</p>
+          </ion-col>
+          <ion-col size="3" class="no-margin-padding text-center">
+            <ion-button expand="full" shape="round" color="dgreen" class="small-btn small-btn-mt" (click)="RemovePackage()">
+              <ion-icon name="add-outline"></ion-icon> Remove
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+
+
+     <div class="text-center"> <ion-button [disabled]="OrderLabTest.length==0 && showpackage=={}" color="dgreen" shape="round" size="" (click)="PlaceOrder()">Place Order</ion-button> </div>
+
+
+    </div>
+  </ion-content>
+</lib-ionic-pullup>
+
+
+
+</ion-content>

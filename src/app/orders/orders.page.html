@@ -5,26 +5,71 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
+
+
 </ion-header>
 
 <ion-content class="custom-dgreen">
+  <ion-tabs>
+    <ion-tab-bar slot="top">
+      <ion-tab-button (click)="ShowSection = 1">
+        <ion-icon name="calendar"></ion-icon>
+        <ion-label>Medicine Orders</ion-label>
+        <ion-badge>{{AllOrder.length}}</ion-badge>
+      </ion-tab-button>
 
-  <ion-card (click)="Detail_Page(order.user_id)" *ngFor="let order of AllOrder">
-    <ion-row class="top-doctor-row">
-      <ion-col size="12">
-        <ion-card-content>
-          <p class="font-10"><span>Order recieved on: {{api.Get_DateTimeLocal(order.created_at)}}</span></p>
-          <p class="font-10"><span *ngFor="let medicines of order.medicines" style="font-size: 8px;">{{medicines.trade_name}}</span></p>
-          <p class="font-10" *ngIf="order.status == 'Pending'" style="color: #0aa900;"><span>Order Created</span></p>
-          <p class="font-10" *ngIf="order.status == 'Processing'" style="color: #fa9818;"><span>Order Created</span></p>
-          <p class="font-10" *ngIf="order.status == 'Dispatched'" style="color: #0069af;"><span>Order Created</span></p>
-          <p class="font-10" *ngIf="order.status == 'Delivered'" style="color: #12884d;"><span>Order Created</span></p>
+      <ion-tab-button (click)="ShowSection = 2">
+        <ion-icon name="calendar"></ion-icon>
+        <ion-label>Lab Test</ion-label>
+        <ion-badge> {{AllLabTest.length}}</ion-badge>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 
-          <p class="font-10" *ngIf="order.is_paid == 0" style="color: #fa9818;"><span>Payment : Pending</span></p>
-          <p class="font-10" *ngIf="order.is_paid == 1" style="color: #0aa900;"><span>Payment : Paid</span></p>
-        </ion-card-content>
-      </ion-col>
-    </ion-row>
-  </ion-card>
+  <br><br>
+
+  <div *ngIf="ShowSection==1">
+    <ion-card (click)="Detail_Page(order.user_id)" *ngFor="let order of AllOrder">
+      <ion-row class="top-doctor-row">
+        <ion-col size="12">
+          <ion-card-content>
+            <p class="font-10"><span>Order recieved on: {{api.Get_DateTimeLocal(order.created_at)}}</span></p>
+            <p class="font-10"><span *ngFor="let medicines of order.medicines"
+                style="font-size: 8px;">{{medicines.trade_name}}</span></p>
+            <p class="font-10" style="color: #0aa900;"><span>{{order.status}}</span></p>
+
+            <p class="font-10" *ngIf="order.is_paid == 0" style="color: #fa9818;"><span>Payment : Pending</span></p>
+            <p class="font-10" *ngIf="order.is_paid == 1" style="color: #0aa900;"><span>Payment : Paid</span></p>
+          </ion-card-content>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+
+  <div *ngIf="ShowSection==2">
+    <ion-card (click)="Detail_Page(order.user_id)" *ngFor="let labtest of AllLabTest">
+      <ion-row class="top-doctor-row">
+        <ion-col size="12">
+
+          <ion-card-content *ngIf="labtest.package_selected!=1">
+            <p class="font-10"><span>Booked on: {{api.Get_DateTimeLocal(labtest.created_at)}}</span></p>
+            <p class="font-10">Test: <span *ngFor="let labtestinfo of labtest.test_data;let i=index"  style="font-size: 8px;">{{labtestinfo.test_name}}, </span> </p>
+            <p class="font-10" style="color: #0aa900;">Status: <span style="text-transform: capitalize;">{{labtest.status}}</span></p>
+            <p class="font-10" *ngIf="labtest.is_paid == 0" style="color: #fa9818;"><span>Payment : Pending</span></p>
+            <p class="font-10" *ngIf="labtest.is_paid == 1" style="color: #0aa900;"><span>Payment : Paid</span></p>
+          </ion-card-content>
+
+          <ion-card-content *ngIf="labtest.package_selected==1">
+            <p class="font-10"><span>Booked on: {{api.Get_DateTimeLocal(labtest.created_at)}}</span></p>
+            <p class="font-10"><span style="font-size: 8px;">Package: {{labtest.name}}, By {{labtest.lab_name}}</span> </p>
+            <p class="font-10" style="color: #0aa900;"><span>{{labtest.status}}</span></p>
+            <p class="font-10" *ngIf="labtest.is_paid == 0" style="color: #fa9818;"><span>Payment : Pending</span></p>
+            <p class="font-10" *ngIf="labtest.is_paid == 1" style="color: #0aa900;"><span>Payment : Paid</span></p>
+          </ion-card-content>
+
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
 
 </ion-content>
