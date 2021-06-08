@@ -78,6 +78,10 @@ const routes: Routes = [
   {
     path: 'lab-test',
     loadChildren: () => import('./lab-test/lab-test.module').then( m => m.LabTestPageModule)
+  },
+  {
+    path: 'coupon-details',
+    loadChildren: () => import('./coupon-details/coupon-details.module').then( m => m.CouponDetailsPageModule)
   }
 ];
 

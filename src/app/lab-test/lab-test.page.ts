@@ -66,6 +66,7 @@ export class LabTestPage implements OnInit {
   }
 
   AddMenu(testdata) {
+    this.showpackage = {};
     debugger
     const found = this.OrderLabTest.some(el => el.id === testdata.id);
     if (!found) {
@@ -77,6 +78,7 @@ export class LabTestPage implements OnInit {
   }
 
   SelectPackage(packagedata) {
+    this.OrderLabTest = [];
     if (this.package_id && this.package_id != '') {
 
     }

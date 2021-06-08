@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {ApiService, IMG_Path} from '../../service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
+import { ModalController } from '@ionic/angular';
+import { CouponDetailsPage } from '../coupon-details/coupon-details.page';
 
 @Component({
   selector: 'app-dashboard',
@@ -25,7 +27,8 @@ export class DashboardPage implements OnInit {
   public long:any;
   constructor(public router:Router, public api:ApiService,
      public geolocation: Geolocation, 
-     public nativeGeocoder: NativeGeocoder
+     public nativeGeocoder: NativeGeocoder,
+     public modalController: ModalController
     ) { 
       let CheckSlideShowed = localStorage.getItem('slide_shown');
 
@@ -41,6 +44,7 @@ export class DashboardPage implements OnInit {
     public DashboardData(){
       this.api.LoaderShow(0, 'Please wait..');
       this.api.POST('app-landing',{}).subscribe(data=>{
+        this.api.LoaderShow(0, 'Please wait..');
         if(data.status == true){
             this.AllData = data.data;
             this.top_doctors = this.AllData.top_doctors;
@@ -55,6 +59,7 @@ export class DashboardPage implements OnInit {
 
   
       },err=>{
+        this.api.LoaderShow(0, 'Please wait..');
         this.api.showToast('Server Error Occured, Please Try After Sometime '+err, 4000);
       })
 
@@ -91,6 +96,18 @@ export class DashboardPage implements OnInit {
 
 
   }
+
+  async presentModalCoupon(coupon) {
+    const modal = await this.modalController.create({
+      component: CouponDetailsPage,
+      cssClass: 'my-coupon-class',
+      componentProps: {
+        'coupondata': coupon,
+      }
+    });
+    return await modal.present();
+  }
+
 
   Detail_Page(doctor_id) {
 
